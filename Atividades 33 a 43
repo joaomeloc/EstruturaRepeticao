@@ -1,0 +1,391 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double temperatura;
+        double soma = 0;
+        double menor = Double.MAX_VALUE;
+        double maior = Double.MIN_VALUE;
+        int contador = 0;
+
+        System.out.println("Digite as temperaturas (digite 0 para encerrar):");
+        do {
+            temperatura = scanner.nextDouble();
+            if (temperatura != 0) {
+                soma += temperatura;
+                contador++;
+                if (temperatura < menor) {
+                    menor = temperatura;
+                }
+                if (temperatura > maior) {
+                    maior = temperatura;
+                }
+            }
+        } while (temperatura != 0);
+
+        if (contador > 0) {
+            double media = soma / contador;
+            System.out.println("Menor temperatura: " + menor);
+            System.out.println("Maior temperatura: " + maior);
+            System.out.println("Média das temperaturas: " + media);
+        } else {
+            System.out.println("Nenhuma temperatura foi inserida.");
+        }
+
+        scanner.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite um número inteiro: ");
+        int numero = scanner.nextInt();
+        boolean primo = true;
+        if (numero <= 1) {
+            primo = false;
+        } else {
+            for (int i = 2; i <= Math.sqrt(numero); i++) {
+                if (numero % i == 0) {
+                    primo = false;
+                    break;
+                }
+            }
+        }
+        if (primo) {
+            System.out.println(numero + " é um número primo.");
+        } else {
+            System.out.println(numero + " não é um número primo.");
+        }
+        scanner.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite um número inteiro: ");
+        int limite = scanner.nextInt();
+        System.out.println("Números primos entre 1 e " + limite + ":");
+        for (int numero = 2; numero <= limite; numero++) {
+            if (ehPrimo(numero)) {
+                System.out.print(numero + " ");
+            }
+        }
+        scanner.close();
+    }
+    public static boolean ehPrimo(int numero) {
+        if (numero <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(numero); i++) {
+            if (numero % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Montar a tabuada de: ");
+        int num = scanner.nextInt();
+        System.out.print("Começar por: ");
+        int inicio = scanner.nextInt();
+        System.out.print("Terminar em: ");
+        int fim = scanner.nextInt();
+        System.out.printf("Vou montar a tabuada de %d começando em %d e terminando em %d:%n", num, inicio, fim);
+        for (int i = inicio; i <= fim; i++) {
+            System.out.printf("%d X %d = %d%n", num, i, num * i);
+        }
+        scanner.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int codigo, codigoMaisAlto = 0, codigoMaisBaixo = 0, codigoMaisGordo = 0, codigoMaisMagro = 0;
+        double altura, peso, alturaTotal = 0, pesoTotal = 0;
+        double alturaMaisAlto = 0, alturaMaisBaixo = Double.MAX_VALUE;
+        double pesoMaisGordo = 0, pesoMaisMagro = Double.MAX_VALUE;
+        int contador = 0;
+        while (true) {
+            System.out.print("Digite o código do cliente (ou 0 para encerrar): ");
+            codigo = scanner.nextInt();
+            if (codigo == 0) break;
+            System.out.print("Digite a altura do cliente (em metros): ");
+            altura = scanner.nextDouble();
+            System.out.print("Digite o peso do cliente (em kg): ");
+            peso = scanner.nextDouble();
+            alturaTotal += altura;
+            pesoTotal += peso;
+            contador++;
+            if (altura > alturaMaisAlto) {
+                alturaMaisAlto = altura;
+                codigoMaisAlto = codigo;
+            }
+            if (altura < alturaMaisBaixo) {
+                alturaMaisBaixo = altura;
+                codigoMaisBaixo = codigo;
+            }
+            if (peso > pesoMaisGordo) {
+                pesoMaisGordo = peso;
+                codigoMaisGordo = codigo;
+            }
+            if (peso < pesoMaisMagro) {
+                pesoMaisMagro = peso;
+                codigoMaisMagro = codigo;
+            }
+        }
+        if (contador > 0) {
+            double mediaAltura = alturaTotal / contador;
+            double mediaPeso = pesoTotal / contador;
+            System.out.println("Cliente mais alto:");
+            System.out.println("Código: " + codigoMaisAlto);
+            System.out.println("Altura: " + alturaMaisAlto);
+            System.out.println("\nCliente mais baixo:");
+            System.out.println("Código: " + codigoMaisBaixo);
+            System.out.println("Altura: " + alturaMaisBaixo);
+            System.out.println("\nCliente mais gordo:");
+            System.out.println("Código: " + codigoMaisGordo);
+            System.out.println("Peso: " + pesoMaisGordo);
+            System.out.println("\nCliente mais magro:");
+            System.out.println("Código: " + codigoMaisMagro);
+            System.out.println("Peso: " + pesoMaisMagro);
+            System.out.println("\nMédia das alturas dos clientes: " + mediaAltura);
+            System.out.println("Média dos pesos dos clientes: " + mediaPeso);
+        } else {
+            System.out.println("Nenhum cliente cadastrado.");
+        }
+        scanner.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o salário inicial do funcionário: ");
+        double salarioInicial = scanner.nextDouble();
+        int anoContratacao = 1995;
+        double salarioAtual = salarioInicial;
+        for (int ano = 1996; ano <= 2024; ano++) {
+            double percentualAumento = (ano - anoContratacao) * 0.015;
+            salarioAtual *= (1 + percentualAumento);
+            anoContratacao = ano;
+        }
+        System.out.println("O salário atual do funcionário é: R$" + salarioAtual);
+        scanner.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int alunoMaisAlto = 0, alunoMaisBaixo = 0;
+        int alturaMaisAlta = Integer.MIN_VALUE, alturaMaisBaixa = Integer.MAX_VALUE;
+        for (int i = 1; i <= 10; i++) {
+            System.out.print("Número do aluno " + i + ": ");
+            int numeroAluno = scanner.nextInt();
+            System.out.print("Altura do aluno " + i + " (em cm): ");
+            int altura = scanner.nextInt();
+            if (altura > alturaMaisAlta) {
+                alunoMaisAlto = numeroAluno;
+                alturaMaisAlta = altura;
+            }
+            if (altura < alturaMaisBaixa) {
+                alunoMaisBaixo = numeroAluno;
+                alturaMaisBaixa = altura;
+            }
+        }
+        System.out.println("Aluno mais alto: " + alunoMaisAlto + " - Altura: " + alturaMaisAlta + " cm");
+        System.out.println("Aluno mais baixo: " + alunoMaisBaixo + " - Altura: " + alturaMaisBaixa + " cm");
+        scanner.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int menorIndiceAcidentes = Integer.MAX_VALUE;
+        int maiorIndiceAcidentes = Integer.MIN_VALUE;
+        String cidadeMenorIndice = "";
+        String cidadeMaiorIndice = "";
+        int totalVeiculos = 0;
+        int totalAcidentes = 0;
+        int cidadesMenos2000 = 0;
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Cidade " + i + ":");
+            System.out.print("Código da cidade: ");
+            int codigoCidade = scanner.nextInt();
+            System.out.print("Número de veículos de passeio em 1999: ");
+            int numVeiculos = scanner.nextInt();
+            System.out.print("Número de acidentes de trânsito com vítimas em 1999: ");
+            int numAcidentes = scanner.nextInt();
+            totalVeiculos += numVeiculos;
+            totalAcidentes += numAcidentes;
+            if (numVeiculos < 2000) {
+                cidadesMenos2000++;
+            }
+            if (numAcidentes < menorIndiceAcidentes) {
+                menorIndiceAcidentes = numAcidentes;
+                cidadeMenorIndice = "Cidade " + codigoCidade;
+            }
+            if (numAcidentes > maiorIndiceAcidentes) {
+                maiorIndiceAcidentes = numAcidentes;
+                cidadeMaiorIndice = "Cidade " + codigoCidade;
+            }
+        }
+        double mediaVeiculos = (double) totalVeiculos / 5;
+        double mediaAcidentesMenos2000 = (double) totalAcidentes / cidadesMenos2000;
+
+        System.out.println("Menor índice de acidentes: " + cidadeMenorIndice + " - " + menorIndiceAcidentes + " acidentes");
+        System.out.println("Maior índice de acidentes: " + cidadeMaiorIndice + " - " + maiorIndiceAcidentes + " acidentes");
+        System.out.println("Média de veículos nas cidades: " + mediaVeiculos);
+        System.out.println("Média de acidentes nas cidades com menos de 2000 veículos de passeio: " + mediaAcidentesMenos2000);
+        scanner.close();
+    }
+}
+
+
+
+import java.text.DecimalFormat;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        DecimalFormat df = new DecimalFormat("0.00");
+        System.out.print("Digite o valor da dívida: R$ ");
+        double divida = scanner.nextDouble();
+        System.out.println("Valor da Dívida   Valor dos Juros   Quantidade de Parcelas   Valor da Parcela");
+        for (int parcelas : new int[]{1, 3, 6, 9, 12}) {
+            double valorJuros = divida * (parcelas > 1 ? (parcelas / 3.0) : 0);
+            double valorTotal = divida + valorJuros;
+            double valorParcela = valorTotal / parcelas;
+            System.out.printf("R$ %-15s R$ %-17s %-24s R$ %s%n",
+                              df.format(valorTotal),
+                              df.format(valorJuros),
+                              parcelas,
+                              df.format(valorParcela));
+        }
+        scanner.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int intervalo1 = 0, intervalo2 = 0, intervalo3 = 0, intervalo4 = 0;
+        System.out.println("Digite números positivos (digite um número negativo para encerrar):");
+        int numero = scanner.nextInt();
+        while (numero >= 0) {
+            if (numero >= 0 && numero <= 25) {
+                intervalo1++;
+            } else if (numero >= 26 && numero <= 50) {
+                intervalo2++;
+            } else if (numero >= 51 && numero <= 75) {
+                intervalo3++;
+            } else if (numero >= 76 && numero <= 100) {
+                intervalo4++;
+            }
+            numero = scanner.nextInt();
+        }
+        System.out.println("Quantidade de números nos intervalos:");
+        System.out.println("[0-25]: " + intervalo1);
+        System.out.println("[26-50]: " + intervalo2);
+        System.out.println("[51-75]: " + intervalo3);
+        System.out.println("[76-100]: " + intervalo4);
+        scanner.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String[][] cardapio = {
+            {"Cachorro Quente", "100", "1.20"},
+            {"Bauru Simples", "101", "1.30"},
+            {"Bauru com ovo", "102", "1.50"},
+            {"Hambúrguer", "103", "1.20"},
+            {"Cheeseburguer", "104", "1.30"},
+            {"Refrigerante", "105", "1.00"}
+        };
+        double totalGeral = 0.0;
+        System.out.println("==== LANCHONETE ====");
+        System.out.println("Cardápio:");
+        System.out.println("Especificação     Código    Preço");
+        for (String[] item : cardapio) {
+            System.out.printf("%-18s %-9s R$ %s%n", item[0], item[1], item[2]);
+        }
+        System.out.println("====================");
+        while (true) {
+            System.out.print("Digite o código do item (ou -1 para encerrar o pedido): ");
+            int codigo = scanner.nextInt();
+            if (codigo == -1) {
+                break;
+            }
+            System.out.print("Digite a quantidade desejada: ");
+            int quantidade = scanner.nextInt();
+            double precoItem = 0.0;
+            for (String[] item : cardapio) {
+                if (item[1].equals(Integer.toString(codigo))) {
+                    precoItem = Double.parseDouble(item[2]);
+                    break;
+                }
+            }
+            double subtotal = precoItem * quantidade;
+            totalGeral += subtotal;
+            System.out.printf("Item: %-15s  Quantidade: %d  Subtotal: R$ %.2f%n", 
+                              getCodigoNome(codigo, cardapio), quantidade, subtotal);
+        }
+        System.out.printf("Total geral do pedido: R$ %.2f%n", totalGeral);
+        scanner.close();
+    }
+    public static String getCodigoNome(int codigo, String[][] cardapio) {
+        for (String[] item : cardapio) {
+            if (Integer.parseInt(item[1]) == codigo) {
+                return item[0];
+            }
+        }
+        return "Item não encontrado";
+    }
+}
