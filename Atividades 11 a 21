@@ -1,0 +1,273 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Digite o primeiro número inteiro: ");
+        int numero1 = input.nextInt();
+
+        System.out.print("Digite o segundo número inteiro: ");
+        int numero2 = input.nextInt();
+        if (numero2 < numero1) {
+            int temp = numero1;
+            numero1 = numero2;
+            numero2 = temp;
+        }
+        int soma = 0;
+        System.out.println("Números no intervalo entre " + numero1 + " e " + numero2 + ":");
+        for (int i = numero1; i <= numero2; i++) {
+            System.out.println(i);
+            soma += i;
+        }
+        System.out.println("A soma dos números no intervalo é: " + soma);
+        input.close(); 
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Digite um número inteiro entre 1 e 10 para gerar a tabuada: ");
+        int numero = input.nextInt();
+ 
+        while (numero < 1 || numero > 10) {
+            System.out.println("Número inválido. Por favor, digite um número entre 1 e 10.");
+            numero = input.nextInt();
+        }
+        System.out.println("Tabuada de " + numero + ":");
+        int contador = 1;
+        while (contador <= 10) {
+            System.out.println(numero + " X " + contador + " = " + (numero * contador));
+            contador++;
+        }
+      input.close(); 
+    }
+}
+
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Digite a base: ");
+        int base = input.nextInt();
+        System.out.print("Digite o expoente: ");
+        int expoente = input.nextInt();
+        int resultado = 1;
+        for (int i = 0; i < expoente; i++) {
+            resultado *= base;
+        }
+        System.out.println("O resultado de " + base + " elevado a " + expoente + " é: " + resultado);
+        input.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int pares = 0, impares = 0;
+        for (int i = 0; i < 10; i++) {
+            System.out.print("Digite um número inteiro: ");
+            int numero = input.nextInt();
+            if (numero % 2 == 0) {
+                pares++;
+            } else {
+                impares++;
+            }
+        }
+        System.out.println("Quantidade de números pares: " + pares);
+        System.out.println("Quantidade de números ímpares: " + impares);
+        input.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Digite o valor de n para gerar a série de Fibonacci até o n-ésimo termo: ");
+        int n = input.nextInt();
+        int primeiro = 1, segundo = 1;
+        System.out.print("Série de Fibonacci até o " + n + "º termo: ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(primeiro + " ");
+            int proximo = primeiro + segundo;
+            primeiro = segundo;
+            segundo = proximo;
+        }
+        input.close();
+    }
+}
+
+
+
+public class Main {
+    public static void main(String[] args) {
+        int primeiro = 0, segundo = 1;
+        System.out.print("Série de Fibonacci até que o valor seja maior que 500: ");
+        while (true) {
+            System.out.print(primeiro + " ");
+            int proximo = primeiro + segundo;
+            primeiro = segundo;
+            segundo = proximo;
+            if (primeiro > 650) {
+                break;
+            }
+        }
+    }
+}
+
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Digite um número inteiro para calcular o fatorial: ");
+        int numero = input.nextInt();
+        int fatorial = 1;
+        for (int i = numero; i > 0; i--) {
+            fatorial *= i;
+        }
+        System.out.println(numero + "! = " + fatorial);
+        input.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Digite a quantidade de números a serem fornecidos: ");
+        int n = input.nextInt();
+        int menor = Integer.MAX_VALUE;
+        int maior = Integer.MIN_VALUE;
+        int soma = 0;
+        for (int i = 0; i < n; i++) {
+            System.out.print("Digite o número " + (i + 1) + ": ");
+            int numero = input.nextInt();
+            if (numero < menor) {
+                menor = numero;
+            }
+            if (numero > maior) {
+                maior = numero;
+            }
+            soma += numero;
+        }
+        System.out.println("Menor valor: " + menor);
+        System.out.println("Maior valor: " + maior);
+        System.out.println("Soma dos valores: " + soma);
+        input.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+public class MinMaxSoma {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Digite a quantidade de números a serem fornecidos: ");
+        int n = input.nextInt();
+        int menor = Integer.MAX_VALUE;
+        int maior = Integer.MIN_VALUE;
+        int soma = 0;
+        for (int i = 0; i < n; i++) {
+            int numero;
+            do {
+                System.out.print("Digite o número " + (i + 1) + " (entre 0 e 1000): ");
+                numero = input.nextInt();
+            } while (numero < 0 || numero > 1000);
+            if (numero < menor) {
+                menor = numero;
+            }
+            if (numero > maior) {
+                maior = numero;
+            }
+            soma += numero;
+        }
+        System.out.println("Menor valor: " + menor);
+        System.out.println("Maior valor: " + maior);
+        System.out.println("Soma dos valores: " + soma);
+        input.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        char continuar;
+        do {
+            int numero;
+            do {
+                System.out.print("Digite um número inteiro positivo menor que 16 para calcular o fatorial: ");
+                numero = input.nextInt();
+            } while (numero < 0 || numero >= 16);
+            int fatorial = 1;
+            for (int i = numero; i > 0; i--) {
+                fatorial *= i;
+            }
+            System.out.println(numero + "! = " + fatorial);
+            System.out.print("Deseja calcular outro fatorial? (s/n): ");
+            continuar = input.next().charAt(0);
+        } while (continuar == 's');
+        input.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        char continuar;
+
+        do {
+            boolean ehPrimo;
+            int numero;
+            do {
+                System.out.print("Digite um número inteiro para verificar se é primo: ");
+                numero = input.nextInt();
+                ehPrimo = true;
+                if (numero <= 1) {
+                    ehPrimo = false;
+                } else {
+                    for (int i = 2; i <= Math.sqrt(numero); i++) {
+                        if (numero % i == 0) {
+                            ehPrimo = false;
+                            break;
+                        }
+                    }
+                }
+                if (!ehPrimo) {
+                    System.out.println("Número não é primo. Tente novamente.");
+                }
+            } while (!ehPrimo);
+
+            System.out.println(numero + " é um número primo.");
+            System.out.print("Deseja verificar outro número primo? (s/n): ");
+            continuar = input.next().charAt(0);
+        } while (continuar == 's');
+
+        input.close();
+    }
+}
