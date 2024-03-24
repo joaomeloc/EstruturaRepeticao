@@ -1,0 +1,282 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        char continuar;
+
+        do {
+            boolean ehPrimo;
+            int numero;
+            do {
+                System.out.print("Digite um número inteiro para verificar se é primo: ");
+                numero = input.nextInt();
+                ehPrimo = true;
+                if (numero <= 1) {
+                    ehPrimo = false;
+                } else {
+                    for (int i = 2; i <= Math.sqrt(numero); i++) {
+                        if (numero % i == 0) {
+                            ehPrimo = false;
+                            break;
+                        }
+                    }
+                }
+                if (!ehPrimo) {
+                    System.out.print("Número não é primo. É divisível por: ");
+                    for (int i = 2; i <= Math.sqrt(numero); i++) {
+                        if (numero % i == 0) {
+                            System.out.print(i + " ");
+                            if (numero / i != i) {
+                                System.out.print(numero / i + " ");
+                            }
+                        }
+                    }
+                    System.out.println();
+                }
+            } while (!ehPrimo);
+
+            System.out.println(numero + " é um número primo.");
+            System.out.print("Deseja verificar outro número primo? (s/n): ");
+            continuar = input.next().charAt(0);
+        } while (continuar == 's');
+
+        input.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Digite um número inteiro para encontrar todos os primos até ele: ");
+        int n = input.nextInt();
+        boolean[] ehPrimo = new boolean[n + 1];
+        for (int i = 2; i <= n; i++) {
+            ehPrimo[i] = true;
+        }
+        int divisoes = 0;
+        for (int i = 2; i * i <= n; i++) {
+            if (ehPrimo[i]) {
+                for (int j = i * i; j <= n; j += i) {
+                    if (ehPrimo[j]) {
+                        divisoes++;
+                    }
+                    ehPrimo[j] = false;
+                }
+            }
+        }
+        System.out.println("Números primos até " + n + ":");
+        for (int i = 2; i <= n; i++) {
+            if (ehPrimo[i]) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println("\nNúmero de divisões executadas: " + divisoes);
+        input.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Digite a quantidade de notas: ");
+        int n = input.nextInt();
+        double soma = 0;
+        for (int i = 0; i < n; i++) {
+            System.out.print("Digite a nota " + (i + 1) + ": ");
+            double nota = input.nextDouble();
+            soma += nota;
+        }
+        double media = soma / n;
+        System.out.println("A média aritmética das notas é: " + media);
+        input.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Quantidade de pessoas:");
+        int n = input.nextInt();
+        int soma = 0;
+        for (int i = 0; i < n; i++) {
+            System.out.print("Idade da pessoa " + (i + 1) + ":");
+            int idade = input.nextInt();
+            soma += idade;
+        }
+        int media = soma / n;
+        if (media >= 0 && media <= 25) {
+            System.out.println("Turma jovem");
+        } else if (media >= 26 && media <= 60) {
+            System.out.println("Turma adulta");
+        } else {
+            System.out.println("Turma idosa");
+        }
+    }
+}
+
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Número total de eleitores:");
+        int totalEleitores = input.nextInt();
+        int[] votos = new int[3];
+        for (int i = 0; i < totalEleitores; i++) {
+            System.out.print("Voto do eleitor " + (i + 1) + " (1, 2 ou 3): ");
+            int voto = input.nextInt();
+            if (voto >= 1 && voto <= 3) {
+                votos[voto - 1]++;
+            } else {
+                System.out.println("Voto inválido.");
+            }
+        }
+        System.out.println("Total de votos para o candidato 1: " + votos[0]);
+        System.out.println("Total de votos para o candidato 2: " + votos[1]);
+        System.out.println("Total de votos para o candidato 3: " + votos[2]);
+    }
+}
+
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Quantidade de turmas: ");
+        int numTurmas = input.nextInt();
+        int totalAlunos = 0;
+        for (int i = 1; i <= numTurmas; i++) {
+            int numAlunos;
+            do {
+                System.out.print("Quantidade de alunos na turma " + i + " (máx. 40): ");
+                numAlunos = input.nextInt();
+            } while (numAlunos < 0 || numAlunos > 40);
+            totalAlunos += numAlunos;
+        }
+        double mediaAlunosPorTurma = (double) totalAlunos / numTurmas;
+        System.out.println("Média de alunos por turma: " + mediaAlunosPorTurma);
+    }
+}
+
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Quantidade de CDs: ");
+        int quantidadeCDs = input.nextInt();
+        double totalInvestido = 0;
+        for (int i = 1; i <= quantidadeCDs; i++) {
+            System.out.print("Informe o valor do CD " + i + ": ");
+            double valorCD = input.nextDouble();
+            totalInvestido += valorCD;
+        }
+        double valorMedioPorCD = totalInvestido / quantidadeCDs;
+        System.out.println("Valor total investido: R$ " + totalInvestido);
+        System.out.println("Valor médio por CD: R$ " + valorMedioPorCD);
+    }
+}
+
+
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Lojas Quase Dois - Tabela de preços");
+
+        double preco = 1.99;
+
+        for (int i = 1; i <= 50; i++) {
+            System.out.println(i + " - R$ " + String.format("%.2f", preco * i));
+        }
+    }
+}
+
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Preço do pão: R$ ");
+        double precoPao = scanner.nextDouble();
+        System.out.println("Panificadora Pão de Ontem - Tabela de preços");
+        for (int i = 1; i <= 50; i++) {
+            System.out.println(i + " - R$ " + String.format("%.2f", precoPao * i));
+        }
+        scanner.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean continuarCompra = true;
+        while (continuarCompra) {
+            double totalCompra = 0.0;
+            int contador = 1;
+            double precoProduto;
+            System.out.println("Lojas Tabajara");
+            while (true) {
+                System.out.print("Produto " + contador + ": R$ ");
+                precoProduto = scanner.nextDouble();
+                if (precoProduto == 0) {
+                    break;
+                }
+                totalCompra += precoProduto;
+                contador++;
+            }
+            System.out.println("Total: R$ " + totalCompra);
+            System.out.print("Dinheiro: R$ ");
+            double dinheiroRecebido = scanner.nextDouble();
+            double troco = dinheiroRecebido - totalCompra;
+            System.out.println("Troco: R$ " + troco);
+            System.out.println();
+            System.out.print("Registrar próxima compra? (S/N): ");
+            char opcao = scanner.next().charAt(0);
+            if (opcao != 'S' && opcao != 's') {
+                continuarCompra = false;
+            }
+        }
+        scanner.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Fatorial de: ");
+        int numero = scanner.nextInt();
+        int fatorial = 1;
+        System.out.print(numero + "! = ");
+        for (int i = numero; i >= 1; i--) {
+            fatorial *= i;
+            System.out.print(i);
+            if (i != 1) {
+                System.out.print(" . ");
+            }
+        }
+        System.out.println(" = " + fatorial);
+        scanner.close();
+    }
+}
