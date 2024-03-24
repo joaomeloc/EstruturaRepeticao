@@ -1,0 +1,265 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner teclado = new Scanner( System.in );
+      // Declaracao de variaveis
+      int nota=0;
+      System.out.println("Digite uma nota: ");
+      nota = teclado.nextInt();
+      while (nota > 10 || nota < 0){
+
+        System.out.println("Nota invalida, digite novamente");
+
+        System.out.println("Digite uma nota: ");
+        nota = teclado.nextInt();
+      }
+       System.out.println("Nota valida");
+     }
+    
+  }
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        String username, password;
+
+        do {
+            System.out.print("Informe o nome do usuário: ");
+            username = input.next();
+            System.out.print("Informe a senha: ");
+            password = input.next();
+
+            if (username.equals(password)) {
+                System.out.println("Senha deve ser diferente do nome de usuário, por favor tente novamente: ");
+            }
+        } while (username.equals(password));
+
+        input.close(); 
+    }
+}
+
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        String username, password;
+
+        do {
+            System.out.print("Informe o nome do usuário: ");
+            username = input.next();
+            System.out.print("Informe a senha: ");
+            password = input.next();
+
+            if (username.equals(password)) {
+                System.out.println("Senha deve ser diferente do nome de usuário, por favor tente novamente: ");
+            }
+        } while (username.equals(password));
+
+        input.close(); 
+    }
+}
+
+
+
+public class Main {
+    public static void main(String[] args) {
+        int populacaoA = 80000;
+        double taxaCrescimentoA = 0.03;
+        int populacaoB = 200000;
+        double taxaCrescimentoB = 0.015;
+        int anos = 0;
+
+        while (populacaoA <= populacaoB) {
+            populacaoA += (int) (populacaoA * taxaCrescimentoA);
+            populacaoB += (int) (populacaoB * taxaCrescimentoB);
+            anos++;
+        }
+
+        System.out.println("Número de anos necessários para que a população de A ultrapasse ou iguale a população de B: " + anos);
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        char continuar;
+
+        do {
+            // Entrada das populações e taxas de crescimento
+            int populacaoA, populacaoB;
+            double taxaCrescimentoA, taxaCrescimentoB;
+
+            do {
+                System.out.print("Informe a população inicial do país A: ");
+                populacaoA = input.nextInt();
+            } while (populacaoA <= 0);
+
+            do {
+                System.out.print("Informe a população inicial do país B: ");
+                populacaoB = input.nextInt();
+            } while (populacaoB <= 0);
+
+            do {
+                System.out.print("Informe a taxa de crescimento anual do país A (em decimal): ");
+                taxaCrescimentoA = input.nextDouble();
+            } while (taxaCrescimentoA <= 0);
+
+            do {
+                System.out.print("Informe a taxa de crescimento anual do país B (em decimal): ");
+                taxaCrescimentoB = input.nextDouble();
+            } while (taxaCrescimentoB <= 0);
+
+            // Cálculo do número de anos necessários para A ultrapassar B
+            int anos = 0;
+            while (populacaoA <= populacaoB) {
+                populacaoA += (int) (populacaoA * taxaCrescimentoA);
+                populacaoB += (int) (populacaoB * taxaCrescimentoB);
+                anos++;
+            }
+
+            // Exibição do resultado
+            System.out.println("Número de anos necessários para que a população de A ultrapasse ou iguale a população de B: " + anos);
+
+            
+            do {
+                System.out.print("Deseja repetir a operação? (s/n): ");
+                continuar = input.next().charAt(0);
+            } while (continuar != 's' && continuar != 'n');
+
+        } while (continuar == 's');
+
+        input.close(); 
+    }
+}
+
+
+
+
+public class Main {
+  public static void main(String[] args) {
+ // Imprimindo os números um abaixo do outro
+        System.out.println("Números de 1 a 20, um abaixo do outro:");
+        for (int i = 1; i <= 20; i++) {
+            System.out.println(i);
+        }
+
+        // Imprimindo os números um ao lado do outro
+        System.out.println("\nNúmeros de 1 a 20, um ao lado do outro:");
+        for (int i = 1; i <= 20; i++) {
+            System.out.print(i + " ");
+        }
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+       
+        System.out.println("Digite 5 números:");
+
+       
+        int maior = Integer.MIN_VALUE;
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Número " + (i + 1) + ": ");
+            int numero = input.nextInt();
+            if (numero > maior) {
+                maior = numero;
+            }
+        }
+
+        System.out.println("O maior número é: " + maior);
+
+        input.close(); 
+    }
+}
+
+
+
+ import java.util.Scanner;
+public class Main {
+  public static void main(String[] args) {
+    Scanner input = new Scanner(System.in);
+
+    int num1, num2, num3, num4, num5, soma, media;
+
+    System.out.println("Digite o primeiro número: ");
+    num1 = input.nextInt();
+    System.out.println("Digite o segundo número: ");
+    num2 = input.nextInt();
+    System.out.println("Digite o terceiro número: ");
+    num3 = input.nextInt();
+    System.out.println("Digite o quarto número: ");
+    num4 = input.nextInt();
+    System.out.println("Digite o quinto número: ");
+    num5 = input.nextInt();
+
+    media = ((num1 + num2 + num3 + num4 + num5) / 5);
+    soma = num1 + num2 + num3 + num4 + num5;
+    System.out.println("A soma dos números é: " + soma);
+    System.out.println("A média dos números é: " + media);
+    
+  }
+}
+
+
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Números ímpares entre 1 e 50:");
+        for (int i = 1; i <= 50; i++) {
+            if (i % 2 != 0) {
+                System.out.println(i);
+            }
+        }
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        
+        System.out.print("Digite o primeiro número inteiro: ");
+        int numero1 = input.nextInt();
+
+        System.out.print("Digite o segundo número inteiro: ");
+        int numero2 = input.nextInt();
+
+        
+        if (numero2 < numero1) {
+            int temp = numero1;
+            numero1 = numero2;
+            numero2 = temp;
+        }
+
+        
+        System.out.println("Números no intervalo entre " + numero1 + " e " + numero2 + ":");
+        for (int i = numero1; i <= numero2; i++) {
+            System.out.println(i);
+        }
+
+        input.close(); 
+    }
+}
