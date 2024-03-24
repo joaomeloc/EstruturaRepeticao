@@ -1,0 +1,305 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int[] votos = new int[7]; 
+        int totalVotos = 0;
+        System.out.println("Eleições Presidenciais");
+        System.out.println("Candidatos:");
+        System.out.println("1 - José");
+        System.out.println("2 - João");
+        System.out.println("3 - Maria");
+        System.out.println("4 - Ana");
+        System.out.println("5 - Voto Nulo");
+        System.out.println("6 - Voto em Branco");
+        System.out.println("Digite o número do candidato (ou 0 para encerrar):");
+        int voto;
+        do {
+            voto = scanner.nextInt();
+            switch (voto) {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                    votos[voto]++;
+                    totalVotos++;
+                    break;
+                case 5:
+                    votos[5]++;
+                    totalVotos++;
+                    break;
+                case 6:
+                    votos[6]++;
+                    totalVotos++;
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Opção inválida! Digite novamente:");
+                 break;
+            }
+        } while (voto != 0);
+        System.out.println("Resultado da Eleição:");
+        for (int i = 1; i <= 4; i++) {
+            System.out.printf("Candidato %d: %d votos%n", i, votos[i]);
+        }
+        System.out.printf("Votos Nulos: %d%n", votos[5]);
+        System.out.printf("Votos em Branco: %d%n", votos[6]);
+        double percentualNulos = (double) votos[5] / totalVotos * 100;
+        double percentualBranco = (double) votos[6] / totalVotos * 100;
+        System.out.printf("Percentual de Votos Nulos: %.2f%%%n", percentualNulos);
+        System.out.printf("Percentual de Votos em Branco: %.2f%%%n", percentualBranco);
+        scanner.close();
+    }
+}
+
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String[] gabarito = {"A", "B", "C", "D", "E", "E", "D", "C", "B", "A"};
+        int totalAlunos = 0;
+        int maiorAcerto = 0;
+        int menorAcerto = 10;
+        int somaTotalAcertos = 0;
+        char continuar;
+        do {
+            System.out.println("Digite as respostas do aluno para as 10 questões:");
+            int acertos = 0;
+            for (int i = 0; i < 10; i++) {
+                System.out.printf("Questão %02d: ", i + 1);
+                String resposta = scanner.next().toUpperCase();
+                if (resposta.equals(gabarito[i])) {
+                    acertos++;
+                }
+            }
+            if (acertos > maiorAcerto) {
+                maiorAcerto = acertos;
+            }
+            if (acertos < menorAcerto) {
+                menorAcerto = acertos;
+            }
+            totalAlunos++;
+            somaTotalAcertos += acertos;
+            System.out.println("Deseja verificar a nota de outro aluno? (S/N)");
+            continuar = scanner.next().charAt(0);
+        } while (continuar == 'S' || continuar == 's');
+        double mediaNotas = (double) somaTotalAcertos / totalAlunos;
+        System.out.println("Resultados finais:");
+        System.out.println("Maior acerto: " + maiorAcerto);
+        System.out.println("Menor acerto: " + menorAcerto);
+        System.out.println("Total de alunos que utilizaram o sistema: " + totalAlunos);
+        System.out.printf("Média das notas da turma: %.2f%n", mediaNotas);
+        scanner.close();
+    }
+}
+
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Double> saltos = new ArrayList<>();
+        System.out.print("Digite o nome do atleta: ");
+        String nomeAtleta = scanner.nextLine();
+        while (!nomeAtleta.isEmpty()) {
+            for (int i = 0; i < 5; i++) {
+                System.out.printf("Informe o %sº salto: ", numeroOrdinal(i + 1));
+                double salto = scanner.nextDouble();
+                saltos.add(salto);
+            }
+            double melhorSalto = encontrarMelhorSalto(saltos);
+            double piorSalto = encontrarPiorSalto(saltos);
+            double mediaSaltos = calcularMediaSaltos(saltos, melhorSalto, piorSalto);
+            System.out.println("\nResultado final:");
+            System.out.println(nomeAtleta + ": " + mediaSaltos + " m\n");
+            saltos.clear();
+            System.out.print("Digite o nome do próximo atleta (ou deixe em branco para sair): ");
+            scanner.nextLine(); // Consumir quebra de linha pendente
+            nomeAtleta = scanner.nextLine();
+        }
+        scanner.close();
+    }
+    public static String numeroOrdinal(int numero) {
+        String[] ordinais = {"primeiro", "segundo", "terceiro", "quarto", "quinto"};
+        return ordinais[numero - 1];
+    }
+    public static double encontrarMelhorSalto(ArrayList<Double> saltos) {
+        double melhorSalto = saltos.get(0);
+        for (double salto : saltos) {
+            if (salto > melhorSalto) {
+                melhorSalto = salto;
+            }
+        }
+        return melhorSalto;
+    }
+    public static double encontrarPiorSalto(ArrayList<Double> saltos) {
+        double piorSalto = saltos.get(0);
+        for (double salto : saltos) {
+            if (salto < piorSalto) {
+                piorSalto = salto;
+            }
+        }
+        return piorSalto;
+    }
+    public static double calcularMediaSaltos(ArrayList<Double> saltos, double melhorSalto, double piorSalto) {
+        double soma = 0;
+        for (double salto : saltos) {
+            soma += salto;
+        }
+        soma -= melhorSalto + piorSalto;
+        return soma / 3;
+    }
+}
+
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o nome do ginasta: ");
+        String nomeGinasta = scanner.nextLine();
+        ArrayList<Double> notas = new ArrayList<>();
+        for (int i = 0; i < 7; i++) {
+            System.out.printf("Nota do %sº jurado: ", numeroOrdinal(i + 1));
+            double nota = scanner.nextDouble();
+            notas.add(nota);
+        }
+        double melhorNota = encontrarMelhorNota(notas);
+        double piorNota = encontrarPiorNota(notas);
+        double media = calcularMedia(notas, melhorNota, piorNota);
+        System.out.println("\nResultado final:");
+        System.out.println("Atleta: " + nomeGinasta);
+        System.out.println("Melhor nota: " + melhorNota);
+        System.out.println("Pior nota: " + piorNota);
+        System.out.printf("Média: %.2f\n", media);
+        scanner.close();
+    }
+    public static String numeroOrdinal(int numero) {
+        String[] ordinais = {"primeiro", "segundo", "terceiro", "quarto", "quinto", "sexto", "sétimo"};
+        return ordinais[numero - 1];
+    }
+    public static double encontrarMelhorNota(ArrayList<Double> notas) {
+        return Collections.max(notas);
+    }
+    public static double encontrarPiorNota(ArrayList<Double> notas) {
+        return Collections.min(notas);
+    }
+    public static double calcularMedia(ArrayList<Double> notas, double melhorNota, double piorNota) {
+        notas.remove(notas.indexOf(melhorNota));
+        notas.remove(notas.indexOf(piorNota));
+        double soma = 0;
+        for (double nota : notas) {
+            soma += nota;
+        }
+        return soma / notas.size();
+    }
+}
+
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite um número inteiro positivo: ");
+        int numero = scanner.nextInt();
+        int numeroInvertido = inverterNumero(numero);
+        System.out.println("Número invertido: " + numeroInvertido);
+        scanner.close();
+    }
+    public static int inverterNumero(int numero) {
+        int numeroInvertido = 0;
+        while (numero != 0) {
+            int digito = numero % 10;
+            numeroInvertido = numeroInvertido * 10 + digito;
+            numero /= 10;
+        }
+        return numeroInvertido;
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o valor de n: ");
+        int n = scanner.nextInt();
+        double soma = calcularSerie(n);
+        System.out.println("Soma da série: " + soma);
+        scanner.close();
+    }
+    public static double calcularSerie(int n) {
+        double soma = 0;
+        int numerador = 1;
+        int denominador = 1;
+        for (int i = 1; i <= n; i++) {
+            soma += (double) numerador / denominador;
+            numerador++;
+            denominador += 2;
+        }
+        return soma;
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o valor de N: ");
+        int n = scanner.nextInt();
+        double resultado = calcularH(n);
+        System.out.println("O valor de H com " + n + " termos é: " + resultado);
+        scanner.close();
+    }
+    public static double calcularH(int n) {
+        double soma = 0;
+        for (int i = 1; i <= n; i++) {
+            soma += 1.0 / i;
+        }
+        return soma;
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o valor de N: ");
+        int n = scanner.nextInt();
+        double soma = calcularSerie(n);
+        System.out.println("A soma dos " + n + " termos da série é: " + soma);
+        scanner.close();
+    }
+    public static double calcularSerie(int n) {
+        double soma = 0;
+        int numerador = 1;
+        int denominador = 1;
+        for (int i = 0; i < n; i++) {
+            soma += (double) numerador / denominador;
+            numerador++;
+            denominador += 2;
+        }
+        return soma;
+    }
+}
